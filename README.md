@@ -8,6 +8,6 @@ While this program is simple to compile in a UNIX terminal, I will continue to u
 
 To compile in a UNIX terminal:
 
-cd to the source code's folder and use the following command: "main.c -o tictactoe"
+cd to the source code's folder and use the following command: "gcc main.c -o tictactoe"
 
 And finally use this command to run the compiled code: "./tictactoe"
