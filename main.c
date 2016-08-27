@@ -74,7 +74,32 @@ int getHumanMove(const int *board) {
     while (moveOk == 0) {
         printf("Enter a number between 1 and 25: ");
         fgets(userInput, 3, stdin);
-        fflush(stdin); //Gets rid of extra strings after fgets retreives the first 3
+        fflush(stdin); //Gets rid of extra strings after fgets retrieves the first 3
+    
+        if(strlen(userInput) != 2) {
+            printf("Invalid input()\n");
+            continue;
+        }
+        
+        if(sscanf(userInput, "%d", &move) != 1) {
+            move = -1;
+            printf("Invalid input\n");
+            continue;
+        }
+        
+        if(move < 1 || move > 25) {
+            move = -1;
+            printf("Invalid range\n");
+            continue;
+        }
+        
+        move--;
+        
+        if(board[convertTo49[move]] != empty) {
+            move=-1;
+            printf("Not available\n");
+            continue;
+        }
         moveOk = 1;
     }
     
