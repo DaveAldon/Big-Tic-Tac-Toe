@@ -13,6 +13,14 @@
  ; ; ; ; ; ; ;
  */
 
+void initializeBoard(int *board);
+void printBoard(const int *board);
+int hasEmpty(const int *board);
+void makeMove(int *board, const int square, const int side);
+int getHumanMove(const int *board);
+void runGame();
+int main(void);
+
 enum { empty, nought, cross, border }; //It's good to use enumerators here because these variables all increment from 0
 
 const int convertTo49[25] = { //Only listing the array values that reside within the borders
@@ -78,7 +86,7 @@ int getHumanMove(const int *board) {
     
         if(strlen(userInput) != 2) {
             printf("Invalid input()\n");
-            continue;
+            continue; //The continues are ecessary in order to not have a segmentation fault. We need to immediately skip to the next iteration of the loop if the condition is met
         }
         
         if(sscanf(userInput, "%d", &move) != 1) {
@@ -129,7 +137,6 @@ void runGame() {
 }
 
 int main(void) {
-    
     srand(time(NULL)); //Random seed generation
     runGame();
     
